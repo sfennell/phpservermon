@@ -18,8 +18,8 @@
  * along with PHP Server Monitor.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @package     phpservermon
- * @author      Pepijn Over <pep@neanderthal-technology.com>
- * @copyright   Copyright (c) 2008-2014 Pepijn Over <pep@neanderthal-technology.com>
+ * @author      Pepijn Over <pep@peplab.net>
+ * @copyright   Copyright (c) 2008-2015 Pepijn Over <pep@peplab.net>
  * @license     http://www.gnu.org/licenses/gpl.txt GNU GPL v3
  * @version     Release: @package_version@
  * @link        http://www.phpservermonitor.org/
@@ -40,17 +40,26 @@
 function psm_get_lang() {
 	$args = func_get_args();
 
-	if(empty($args)) return $GLOBALS['sm_lang'];
+	if (empty($args)) return $GLOBALS['sm_lang'];
 
 	$result = null;
+	$resultDefault = null;
 	$node = null;
+	$nodeDefault = null;
 
-	if($args) {
+	if ($args) {
 		$node = '$GLOBALS[\'sm_lang\'][\'' . implode('\'][\'', $args) . '\']';
+		$nodeDefault = '$GLOBALS[\'sm_lang_default\'][\'' . implode('\'][\'', $args) . '\']';
 	}
-	eval('if (isset('.$node.')) $result = '.$node.';');
 
-	return $result;
+	eval('if (isset(' . $node . ')) $result = ' . $node . ';');
+	eval('if (isset(' . $nodeDefault . ')) $resultDefault = ' . $nodeDefault . ';');
+
+	if (empty($result)) {
+		return $resultDefault;
+	} else {
+		return $result;
+	}
 }
 
 /**
@@ -60,12 +69,25 @@ function psm_get_lang() {
  * @see psm_get_lang()
  */
 function psm_load_lang($lang) {
+	// if not in the language translation must always be available starting translation - English
+	$default_lang_file = PSM_PATH_LANG . 'en_US.lang.php';
+
+	if (file_exists($default_lang_file)) {
+		require $default_lang_file;
+
+		if (isset($sm_lang)) {
+			$GLOBALS['sm_lang_default'] = $sm_lang;
+			unset($sm_lang);
+		}
+	}
+
+	// translated language
 	$lang_file = PSM_PATH_LANG . $lang . '.lang.php';
 
-	if(!file_exists($lang_file)) {
+	if (!file_exists($lang_file)) {
 		// If the file has been removed, we use the english one
 		$en_file = PSM_PATH_LANG . 'en_US.lang.php';
-		if(!file_exists($en_file)) {
+		if (!file_exists($en_file)) {
 			// OK, nothing we can do
 			die('unable to load language file: ' . $lang_file);
 		}
@@ -73,7 +95,7 @@ function psm_load_lang($lang) {
 	}
 
 	require $lang_file;
-	if(isset($sm_lang['locale'])) {
+	if (isset($sm_lang['locale'])) {
 		setlocale(LC_TIME, $sm_lang['locale']);
 	}
 
@@ -223,17 +245,17 @@ function psm_add_log($server_id, $type, $message, $user_id = null) {
  * @param string $latency
  */
 function psm_log_uptime($server_id, $status, $latency) {
-    global $db;
+	global $db;
 
-    $db->save(
-        PSM_DB_PREFIX.'servers_uptime',
-        array(
-            'server_id' => $server_id,
-            'date' => date('Y-m-d H:i:s'),
-            'status' => $status,
-            'latency' => $latency,
-        )
-    );
+	$db->save(
+		PSM_DB_PREFIX.'servers_uptime',
+		array(
+			'server_id' => $server_id,
+			'date' => date('Y-m-d H:i:s'),
+			'status' => $status,
+			'latency' => $latency,
+		)
+	);
 }
 
 /**
@@ -388,6 +410,7 @@ function psm_update_available() {
 function psm_build_mail($from_name = null, $from_email = null) {
 	$phpmailer = new \PHPMailer();
 	$phpmailer->Encoding = "base64";
+	$phpmailer->CharSet = 'UTF-8';
 	$phpmailer->SMTPDebug = false;
 
 	if(psm_get_conf('email_smtp') == '1') {
@@ -466,7 +489,15 @@ function psm_build_sms() {
 		case 'smsglobal':
 			$sms = new \psm\Txtmsg\Smsglobal();
 			break;
-	}
+		case 'freevoipdeal':
+			$sms = new \psm\Txtmsg\FreeVoipDeal();
+			break;
+		case 'nexmo':
+			$sms = new \psm\Txtmsg\Nexmo();
+			break;
+		case 'octopush':
+			$sms = new \psm\Txtmsg\Octopush();
+			break;	}
 
 	// copy login information from the config file
 	if($sms) {

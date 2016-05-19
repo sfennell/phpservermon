@@ -18,8 +18,8 @@
  * along with PHP Server Monitor.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @package     phpservermon
- * @author      Pepijn Over <pep@neanderthal-technology.com>
- * @copyright   Copyright (c) 2008-2014 Pepijn Over <pep@neanderthal-technology.com>
+ * @author      Pepijn Over <pep@peplab.net>
+ * @copyright   Copyright (c) 2008-2015 Pepijn Over <pep@peplab.net>
  * @license     http://www.gnu.org/licenses/gpl.txt GNU GPL v3
  * @version     Release: @package_version@
  * @link        http://www.phpservermonitor.org/
@@ -29,7 +29,7 @@
 /**
  * Current PSM version
  */
-define('PSM_VERSION', '3.1.1');
+define('PSM_VERSION', '3.2.0');
 
 /**
  * URL to check for updates. Will not be checked if turned off on config page.
@@ -102,12 +102,6 @@ define('PSM_CRON_TIMEOUT', 600);
  */
 define('PSM_CURL_TIMEOUT', 10);
 
-
-/**
- * Name of the default theme.
- */
-define('PSM_THEME', 'default');
-
 /**
  * Clone URL for the Pushover.net service.
  */
@@ -118,3 +112,17 @@ define('PSM_PUSHOVER_CLONE_URL', 'https://pushover.net/apps/clone/php_server_mon
  * Useful for cronjobs if it cannot be auto-detected.
  */
 //define('PSM_BASE_URL', null);
+
+if(!defined('PSM_MODULE_DEFAULT')) {
+	/**
+	 * Default theme
+	 */
+	define('PSM_THEME', 'default');
+}
+
+if(!defined('PSM_MODULE_DEFAULT')) {
+	/**
+	 * Default module (if none given or invalid one)
+	 */
+	define('PSM_MODULE_DEFAULT', 'server_status');
+}

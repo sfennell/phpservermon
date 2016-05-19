@@ -19,7 +19,7 @@
  *
  * @package     phpservermon
  * @author      Jean Pierre Kolb <http://www.jpkc.com/>
- * @copyright   Copyright (c) 2008-2014 Pepijn Over <pep@neanderthal-technology.com>
+ * @copyright   Copyright (c) 2008-2015 Pepijn Over <pep@peplab.net>
  * @license     http://www.gnu.org/licenses/gpl.txt GNU GPL v3
  * @version     Release: @package_version@
  * @link        http://www.phpservermonitor.org/
@@ -28,6 +28,8 @@
 $sm_lang = array(
 	'name' => 'Deutsch - German',
 	'locale' => array('de_DE.UTF-8', 'de_DE', 'german'),
+	'locale_tag' => 'de',
+	'locale_dir' => 'ltr',
 	'system' => array(
 		'title' => 'Server Monitor',
 		'install' => 'Installation',
@@ -194,7 +196,10 @@ $sm_lang = array(
         'sms_gateway_clickatell' => 'Clickatell',
         'sms_gateway_textmarketer' => 'Textmarketer',
 		'sms_gateway_smsglobal' => 'SMSGlobal',
+		'sms_gateway_octopush' => 'Octopush',
 		'sms_gateway_smsit' => 'Smsit',
+		'sms_gateway_freevoipdeal' => 'FreeVoipDeal',
+		'sms_gateway_nexmo' => 'Nexmo',
 		'sms_gateway_username' => 'Gateway Benutzername',
 		'sms_gateway_password' => 'Gateway Passwort',
 		'sms_from' => 'SMS-Sendernummer',

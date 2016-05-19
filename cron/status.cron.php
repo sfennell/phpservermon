@@ -18,15 +18,15 @@
  * along with PHP Server Monitor.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @package     phpservermon
- * @author      Pepijn Over <pep@neanderthal-technology.com>
- * @copyright   Copyright (c) 2008-2014 Pepijn Over <pep@neanderthal-technology.com>
+ * @author      Pepijn Over <pep@peplab.net>
+ * @copyright   Copyright (c) 2008-2015 Pepijn Over <pep@peplab.net>
  * @license     http://www.gnu.org/licenses/gpl.txt GNU GPL v3
  * @version     Release: @package_version@
  * @link        http://www.phpservermonitor.org/
  **/
 
 // include main configuration and functionality
-require_once dirname(__FILE__) . '/../src/bootstrap.php';
+require_once __DIR__ . '/../src/bootstrap.php';
 
 if(!psm_is_cli()) {
 	die('This script can only be run from the command line.');
@@ -68,7 +68,7 @@ if(!defined('PSM_DEBUG') || !PSM_DEBUG) {
 }
 psm_update_conf('cron_running_time', $time);
 
-$autorun = new \psm\Util\Server\UpdateManager($db);
-$autorun->run();
+$autorun = $router->getService('util.server.updatemanager');
+$autorun->run(true);
 
 psm_update_conf('cron_running', 0);
