@@ -1,3 +1,4 @@
+{% import 'main/macros.tpl.html' as macro %}
 <form class="form-horizontal" name="edit_config" action="index.php?mod=config&amp;action=save" id="edit_config" method="post">
     <ul class="nav nav-tabs">
       <li class="{{ general_active }}"><a href="#config-general" data-toggle="tab">{{ label_general }}</a></li>
@@ -159,6 +160,7 @@
 						<option value="smsglobal" {{ sms_selected_smsglobal|raw }}>{{ label_sms_gateway_smsglobal }}</option>
 						<option value="smsit" {{ sms_selected_smsit|raw }}>{{ label_sms_gateway_smsit }}</option>
 						<option value="freevoipdeal" {{ sms_selected_freevoipdeal|raw }}>{{ label_sms_gateway_freevoipdeal }}</option>
+						<option value="octopush" {{ sms_selected_octopush|raw }}>{{ label_sms_gateway_octopush }}</option>
                       </select>
                 </div>
             </div>
@@ -225,4 +227,5 @@
 		</fieldset>
 		</div>
 	</div>
+	{{ macro.csrf_input() }}
 </form>

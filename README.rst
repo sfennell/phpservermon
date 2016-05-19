@@ -1,7 +1,12 @@
 PHP Server Monitor
 ==================
 
-Version 3.1.1
+.. image:: https://badges.gitter.im/Join%20Chat.svg
+   :alt: Join the chat at https://gitter.im/erickrf/nlpnet
+   :target: https://gitter.im/phpservermon/phpservermon
+   
+Version 3.2.0
+
 
 PHP Server Monitor is a script that checks whether your websites and servers are up and running.
 It comes with a web based user interface where you can manage your services and websites,
@@ -29,7 +34,7 @@ There are two different ways to monitor a server:
 * Website
 
   You can enter a link to a website, it will then use cURL to open the website and check the HTTP status code.
-  If the HTTP status code is in the 4xx range, it means an error occurred and the website is not accessible to the public.
+  If the HTTP status code is in the 4xx/5xx, it means an error occurred and the website is not accessible to the public.
   You can also set a regular expression to match for content on the page itself.
   If the regular expression returns no matches, the website is considered down.
   In both cases the script will return a "status offline", and will start sending out notifications.
@@ -47,6 +52,10 @@ The following SMS gateways are currently available:
 * Spryng - <http://www.spryng.nl>
 * Textmarketer - <http://www.textmarketer.co.uk>
 * FreeVoipDeal - <http://www.freevoipdeal.com>
+* Nexmo - <https://www.nexmo.com/>
+* OctoPush - <http://www.octopush.com/>
+
+
 
 Please note: for these gateways you will need an account with sufficient credits.
 

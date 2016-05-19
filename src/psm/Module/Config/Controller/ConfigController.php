@@ -70,6 +70,7 @@ class ConfigController extends AbstractController {
 		parent::__construct($db, $twig);
 
 		$this->setMinUserLevelRequired(PSM_USER_ADMIN);
+		$this->setCSRFKey('config');
 
 		$this->setActions(array(
 			'index', 'save',
@@ -315,6 +316,8 @@ class ConfigController extends AbstractController {
 			'label_sms_gateway_smsit' => psm_get_lang('config', 'sms_gateway_smsit'),
 			'label_sms_gateway_freevoipdeal' => psm_get_lang('config', 'sms_gateway_freevoipdeal'),
 			'label_sms_gateway_smsglobal' => psm_get_lang('config', 'sms_gateway_smsglobal'),
+			'label_sms_gateway_nexmo' => psm_get_lang('config', 'sms_gateway_nexmo'),
+			'label_sms_gateway_octopush' => psm_get_lang('config', 'sms_gateway_octopush'),
 			'label_sms_gateway_username' => psm_get_lang('config', 'sms_gateway_username'),
 			'label_sms_gateway_password' => psm_get_lang('config', 'sms_gateway_password'),
 			'label_sms_from' => psm_get_lang('config', 'sms_from'),

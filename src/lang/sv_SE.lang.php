@@ -21,13 +21,15 @@
  * @author      andlil
  * @copyright   Copyright (c) 2008-2015 Pepijn Over <pep@peplab.net>
  * @license     http://www.gnu.org/licenses/gpl.txt GNU GPL v3
- * @version     Release: v3.1.1
+ * @version     Release: @package_version@
  * @link        http://www.phpservermonitor.org/
  **/
 
 $sm_lang = array(
 	'name' => 'Svenska - Swedish',
 	'locale' => array('sv_SE.UTF-8', 'sv_SE', 'svenska', 'svenska-SE'),
+	'locale_tag' => 'sv',
+	'locale_dir' => 'ltr',
 	'system' => array(
 		'title' => 'Server Monitor',
 		'install' => 'Installera',
@@ -192,10 +194,11 @@ $sm_lang = array(
 		'sms_gateway_spryng' => 'Spryng',
 		'sms_gateway_inetworx' => 'Inetworx',
 		'sms_gateway_clickatell' => 'Clickatell',
-        'sms_gateway_textmarketer' => 'Textmarketer',
+        	'sms_gateway_textmarketer' => 'Textmarketer',
 		'sms_gateway_smsglobal' => 'SMSGlobal',
 		'sms_gateway_smsit' => 'Smsit',
 		'sms_gateway_freevoipdeal' => 'FreeVoipDeal',
+		'sms_gateway_nexmo' => 'Nexmo',
 		'sms_gateway_username' => 'Gateway användarnamn',
 		'sms_gateway_password' => 'Gateway lösenord',
 		'sms_from' => 'Avsändarens telefonnummer',

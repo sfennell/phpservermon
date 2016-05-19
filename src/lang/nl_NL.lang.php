@@ -28,9 +28,11 @@
 $sm_lang = array(
 	'name' => 'Nederlands - Dutch',
 	'locale' => array('nl_NL.UTF-8', 'nl_NL', 'dutch'),
+	'locale_tag' => 'nl',
+	'locale_dir' => 'ltr',
 	'system' => array(
 		'title' => 'Server Monitor',
-		'install' => 'Intalleren',
+		'install' => 'Installeren',
 		'action' => 'Actie',
 		'save' => 'Opslaan',
 		'edit' => 'Wijzig',
@@ -194,8 +196,10 @@ $sm_lang = array(
 		'sms_gateway_clickatell' => 'Clickatell',
         'sms_gateway_textmarketer' => 'Textmarketer',
 		'sms_gateway_smsglobal' => 'SMSGlobal',
+		'sms_gateway_octopush' => 'Octopush',
 		'sms_gateway_smsit' => 'Smsit',
 		'sms_gateway_freevoipdeal' => 'FreeVoipDeal',
+		'sms_gateway_nexmo' => 'Nexmo',
 		'sms_gateway_username' => 'Gateway gebruikersnaam',
 		'sms_gateway_password' => 'Gateway wachtwoord',
 		'sms_from' => 'Telefoonnummer afzender',
@@ -295,6 +299,6 @@ $sm_lang = array(
 	),
 	'error' => array(
 		'401_unauthorized' => 'Unauthorized',
-		'401_unauthorized_description' => 'U heeft niet de juiste bevoegdheden om deze pagina te bekijken.',
+		'401_unauthorized_description' => 'Je hebt niet de juiste bevoegdheden om deze pagina te bekijken.',
 	),
 );

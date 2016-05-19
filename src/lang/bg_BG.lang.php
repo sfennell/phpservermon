@@ -28,6 +28,8 @@
 $sm_lang = array(
 	'name' => 'Български - Bulgarian',
 	'locale' => array('bg_BG.UTF-8', 'bg_BG', 'bulgarian'),
+	'locale_tag' => 'bg',
+	'locale_dir' => 'ltr',
 	'system' => array(
 		'title' => 'Мониторинг',
 		'install' => 'Инсталация',
@@ -196,6 +198,8 @@ $sm_lang = array(
 		'sms_gateway_textmarketer' => 'Textmarketer',
 		'sms_gateway_freevoipdeal' => 'FreeVoipDeal',
 		'sms_gateway_smsglobal' => 'SMSGlobal',
+		'sms_gateway_octopush' => 'Octopush',
+		'sms_gateway_nexmo' => 'Nexmo',
 		'sms_gateway_username' => 'Потребител',
 		'sms_gateway_password' => 'Парола',
 		'sms_from' => 'Номер на изпращача',
